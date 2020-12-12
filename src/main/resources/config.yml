@@ -1,0 +1,8 @@
+# Welcome to Minecraft Mondays!
+# -----------------------------
+
+# The URL which will accept or decline users.
+# Okay: https://example.com/?uuid=abcde 200
+# Kick: https://example.com/?uuid=fghij 403
+# Bad!: https://example.com/?uuid=jklmn 500
+url: https://example.com/
