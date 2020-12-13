@@ -14,10 +14,12 @@ public class WhitelistChecker {
   private String api;
   private String name;
   private String ver;
+  private String token;
 
   WhitelistChecker(Monday monday) {
     this.monday = monday;
     this.api = monday.getConfig().getString("url");
+    this.token = monday.getConfig().getString("token");
     this.name = monday.getDescription().getName();
     this.ver = monday.getDescription().getVersion();
   }
@@ -36,7 +38,8 @@ public class WhitelistChecker {
       URL url = new URL(this.api + uuid);
       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
       connection.setRequestMethod("GET");
-      connection.setRequestProperty("User-Agent", String.format("%s (%s)", name, ver));
+      connection.setRequestProperty("User-Agent", String.format("%s (%s)", this.name, this.ver));
+      if (this.token != null) connection.setRequestProperty("X-Auth-Token", this.token);
 
       int code = connection.getResponseCode();
 
@@ -56,6 +59,8 @@ public class WhitelistChecker {
           return WhitelistResult.ALLOWED;
         case 401:
           return WhitelistResult.SERVER_UNAUTHORISED;
+        case 403:
+          return WhitelistResult.SERVER_FORBIDDEN;
         default:
           return WhitelistResult.SERVER_ERROR;
       }

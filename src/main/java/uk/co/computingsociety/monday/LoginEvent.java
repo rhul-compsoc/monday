@@ -1,5 +1,6 @@
 package uk.co.computingsociety.monday;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -7,10 +8,12 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 public class LoginEvent implements Listener {
   private WhitelistChecker checker;
   private boolean kick;
+  private FileConfiguration config;
 
   public LoginEvent(Monday monday) {
     this.checker = new WhitelistChecker(monday);
-    this.kick = monday.getConfig().getBoolean("kick");
+    this.config = monday.getConfig();
+    this.kick = this.config.getBoolean("kick");
   }
 
   @EventHandler
@@ -24,7 +27,7 @@ public class LoginEvent implements Listener {
     WhitelistResult result = checker.check(event.getUniqueId().toString());
 
     if (result != WhitelistResult.ALLOWED) {
-      event.disallow(result.action.asyncResult, result.message);
+      event.disallow(result.action.asyncResult, result.getMessage(this.config));
     } else {
       event.allow();
     }

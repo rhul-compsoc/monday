@@ -3,9 +3,68 @@
 
 # The URL which will accept or decline users.
 url: https://example.com/api/games/bindings/guild/500612695570120704/game/minecraft/id/
+token: abcdefg==
 kick: true
-not_whitelisted_join: |
-  CompSoc will soon switch the Minecraft server to whitelisted users only.
-  To carry on without disruption, get you or your friend at RHUL to run
-    !game minecraft add [mc username]
-  in the CompSoc Discord server.
+
+message:
+  header: |
+    &f&lWelcome to Comp&4&lSoc&r
+    &7&oRoyal Holloway, University of London&r&f\n
+  footer: |
+    &r
+    &7Discord: &fhttps://dc.cmpsc.uk/
+    &7Website: https://computingsociety.co.uk/
+  kick:
+    MISSING_URI: |
+      The MondayWhitelist plugin was not provided a whitelist URL
+    MALFORMED_URI: |
+      The MondayWhitelist plugin was provided an invalid URL
+    ALLOWED: |
+      Welcome!
+    NOT_WHITELISTED: |
+      Please add yourself (or get your RHUL friend to add you) to the whitelist with the following command on Discord.
+
+      !game minecraft add [username]
+
+      https://dc.cmpsc.uk/
+    BANNED: |
+      You have been banned by the Computing Society
+    SERVER_ERROR: |
+      The MondayWhitelist server encountered an error
+    SERVER_UNAUTHORISED: |
+      The MondayWhitelist client was unauthorized by the MondayWhitelist server
+    SERVER_FORBIDDEN: |
+      The MondayWhitelist client was unauthorized by the MondayWhitelist server
+    BAD_RESPONSE: |
+      The MondayWhitelist client recieved a bad response from the MondayWhitelist server
+    IO_EXCEPTION: |
+      An IOException was caught while trying to fetch your whitelist details
+    UNCAUGHT_EXCEPTION: |
+      An uncaught exception was caught while trying to fetch your whitelist details
+  join:
+    MISSING_URI: |
+      The MondayWhitelist plugin was not provided a whitelist URL
+    MALFORMED_URI: |
+      The MondayWhitelist plugin was provided an invalid URL
+    ALLOWED: |
+      Welcome!
+    NOT_WHITELISTED: |
+      The server will become whitelist only soon.
+      Get yourself/a friend at RHUL to register your account before you lose access at https://dc.cmpsc.uk/
+
+      Run the following command in Discord:
+      !game minecraft add [username]
+    BANNED: |
+      You have been banned by the Computing Society
+    SERVER_ERROR: |
+      The MondayWhitelist server encountered an error
+    SERVER_UNAUTHORISED: |
+      The MondayWhitelist client was unauthorized by the MondayWhitelist server
+    SERVER_FORBIDDEN: |
+      The MondayWhitelist client was unauthorized by the MondayWhitelist server
+    BAD_RESPONSE: |
+      The MondayWhitelist client recieved a bad response from the MondayWhitelist server
+    IO_EXCEPTION: |
+      An IOException was caught while trying to fetch your whitelist details
+    UNCAUGHT_EXCEPTION: |
+      An uncaught exception was caught while trying to fetch your whitelist details
