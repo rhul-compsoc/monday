@@ -2,7 +2,10 @@
 # -----------------------------
 
 # The URL which will accept or decline users.
-# Okay: https://example.com/?uuid=abcde 200
-# Kick: https://example.com/?uuid=fghij 403
-# Bad!: https://example.com/?uuid=jklmn 500
-url: https://example.com/
+url: https://example.com/api/games/bindings/guild/500612695570120704/game/minecraft/id/
+kick: true
+not_whitelisted_join: |
+  CompSoc will soon switch the Minecraft server to whitelisted users only.
+  To carry on without disruption, get you or your friend at RHUL to run
+    !game minecraft add [mc username]
+  in the CompSoc Discord server.

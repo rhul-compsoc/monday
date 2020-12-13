@@ -1,5 +1,5 @@
 _It's everyone's favourite_
-# Minecraft Monday
+# MondayWhitelist
 The whitelist plugin for the Computing Society Minecraft Server.
 
 ## Usage
