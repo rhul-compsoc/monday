@@ -24,11 +24,19 @@ public enum WhitelistResult {
     this.action = action;
   }
 
-  public String getMessage(FileConfiguration options) {
+  public String getKey(FileConfiguration options) {
     boolean kick = options.getBoolean("kick");
-    String key = String.format("message.%s.%s", kick ? "kick" : "join", this.name());
+    return String.format("message.%s.%s", kick ? "kick" : "join", this.name());
+  }
+
+
+  public String getMessage(FileConfiguration options) {
+    return options.getString(getKey(options));
+  }
+
+  public String getFullMessage(FileConfiguration options) {
     String header = options.getString("message.header");
-    String text = options.getString(key);
+    String text = this.getMessage(options);
     String footer = options.getString("message.footer");
     return ChatColor.translateAlternateColorCodes('&', header + text + footer);
   }

@@ -1,7 +1,9 @@
 package uk.co.computingsociety.monday;
 
+import club.minnced.discord.webhook.WebhookClient;
+import club.minnced.discord.webhook.send.WebhookEmbed;
+import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,10 +31,11 @@ public class LoginEvent implements Listener {
       return;
     }
 
-    WhitelistResult result = checker.check(event.getUniqueId().toString());
+    WhitelistResult result = checker.checkAndLog(event.getUniqueId().toString(), event.getAddress().getHostAddress(),
+                                                 event.getName());
 
     if (result != WhitelistResult.ALLOWED) {
-      event.disallow(result.action.asyncResult, result.getMessage(this.config));
+      event.disallow(result.action.asyncResult, result.getFullMessage(this.config));
     } else {
       event.allow();
     }
@@ -42,9 +45,16 @@ public class LoginEvent implements Listener {
   public void afterPlayerJoin(PlayerJoinEvent event) {
     FileConfiguration config = this.config;
 
+    // If the kicking mechanism is turned on, ignore the event.
+    if (kick) {
+      return;
+    }
+
     Bukkit.getScheduler().runTaskAsynchronously(monday, () -> {
-      WhitelistResult result = checker.check(event.getPlayer().getUniqueId().toString());
-      event.getPlayer().sendMessage(result.getMessage(config));
+      WhitelistResult result = checker.checkAndLog(event.getPlayer().getUniqueId().toString(),
+                                                   event.getPlayer().getAddress().getAddress().getHostAddress(),
+                                                   event.getPlayer().getName());
+      event.getPlayer().sendMessage(result.getFullMessage(config));
     });
   }
 }

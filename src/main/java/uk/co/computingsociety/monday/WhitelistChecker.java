@@ -1,6 +1,10 @@
 package uk.co.computingsociety.monday;
 
+import club.minnced.discord.webhook.WebhookClient;
+import club.minnced.discord.webhook.send.WebhookEmbed;
+import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
 import com.google.gson.Gson;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +19,8 @@ public class WhitelistChecker {
   private String name;
   private String ver;
   private String token;
+  private FileConfiguration config;
+  private WebhookClient webhookClient;
 
   WhitelistChecker(Monday monday) {
     this.monday = monday;
@@ -22,8 +28,37 @@ public class WhitelistChecker {
     this.token = monday.getConfig().getString("token");
     this.name = monday.getDescription().getName();
     this.ver = monday.getDescription().getVersion();
+    this.config = monday.getConfig();
+
+    String webhook = this.config.getString("webhook");
+    if (webhook != null) {
+      this.webhookClient = WebhookClient.withUrl(webhook);
+    }
   }
 
+  public WhitelistResult checkAndLog(String uuid, String address) {
+    return checkAndLog(uuid, address, null);
+  }
+  public WhitelistResult checkAndLog(String uuid) {
+    return checkAndLog(uuid, null, null);
+  }
+  public WhitelistResult checkAndLog(String uuid, String address, String username) {
+    WhitelistResult result = this.check(uuid);
+
+    if (this.webhookClient != null) {
+      WebhookEmbedBuilder embed = new WebhookEmbedBuilder()
+        .setColor(result == WhitelistResult.ALLOWED ? 0x00FF00 : 0xFF0000)
+        .setDescription(result.name())
+        .addField(new WebhookEmbed.EmbedField(false, "User Message", result.getMessage(this.config)));
+
+      if (address != null) embed.addField(new WebhookEmbed.EmbedField(false, "Address", address));
+      if (username != null) embed.addField(new WebhookEmbed.EmbedField(false, "Username", username));
+
+      webhookClient.send(embed.build());
+    }
+
+    return result;
+  }
 
   public WhitelistResult check(String uuid) {
     // Check if the location is null

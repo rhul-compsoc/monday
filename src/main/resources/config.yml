@@ -5,6 +5,7 @@
 url: https://example.com/api/games/bindings/guild/500612695570120704/game/minecraft/id/
 token: abcdefg==
 kick: true
+webhook: null
 
 message:
   header: |+
