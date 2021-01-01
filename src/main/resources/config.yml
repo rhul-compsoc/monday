@@ -7,13 +7,14 @@ token: abcdefg==
 kick: true
 
 message:
-  header: |
+  header: |+
     &f&lWelcome to Comp&4&lSoc&r
-    &7&oRoyal Holloway, University of London&r&f\n
-  footer: |
+    &7&oRoyal Holloway, University of London&r&f
+
+  footer: |-
     &r
     &7Discord: &fhttps://dc.cmpsc.uk/
-    &7Website: https://computingsociety.co.uk/
+    &7Website: &fhttps://computingsociety.co.uk/
   kick:
     MISSING_URI: |
       The MondayWhitelist plugin was not provided a whitelist URL
@@ -22,11 +23,10 @@ message:
     ALLOWED: |
       Welcome!
     NOT_WHITELISTED: |
-      Please add yourself (or get your RHUL friend to add you) to the whitelist with the following command on Discord.
+      Please add yourself (or get your RHUL friend to add you) to the whitelist with the CompSoc Passport.
 
-      !game minecraft add [username]
-
-      https://dc.cmpsc.uk/
+      Log in > Guilds > RHUL Computing Society > Manage Game Connections
+      https://passport.cmpsc.uk/
     BANNED: |
       You have been banned by the Computing Society
     SERVER_ERROR: |
@@ -47,13 +47,10 @@ message:
     MALFORMED_URI: |
       The MondayWhitelist plugin was provided an invalid URL
     ALLOWED: |
-      Welcome!
+      Have a nice day!
     NOT_WHITELISTED: |
-      The server will become whitelist only soon.
-      Get yourself/a friend at RHUL to register your account before you lose access at https://dc.cmpsc.uk/
-
-      Run the following command in Discord:
-      !game minecraft add [username]
+      The server will soon be for whitelisted members only.
+      Whitelist you or a friend at https://passport.cmpsc.uk/
     BANNED: |
       You have been banned by the Computing Society
     SERVER_ERROR: |
