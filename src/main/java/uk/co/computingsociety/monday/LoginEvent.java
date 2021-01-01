@@ -45,7 +45,7 @@ public class LoginEvent implements Listener {
   public void afterPlayerJoin(PlayerJoinEvent event) {
     FileConfiguration config = this.config;
 
-    // If the kicking mechanism is turned on, ignore the event.
+    // If the kicking mechanism is turned Ion, ignore the event.
     if (kick) {
       return;
     }

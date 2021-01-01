@@ -100,10 +100,12 @@ public class WhitelistChecker {
           return WhitelistResult.SERVER_ERROR;
       }
     } catch (IOException e) {
+      monday.getLogger().log(Level.WARNING, e.toString());
+      e.printStackTrace();
       return WhitelistResult.IO_EXCEPTION;
     } catch (Exception e) {
-      e.printStackTrace();
       monday.getLogger().log(Level.SEVERE, e.toString());
+      e.printStackTrace();
       return WhitelistResult.UNCAUGHT_EXCEPTION;
     }
   }
