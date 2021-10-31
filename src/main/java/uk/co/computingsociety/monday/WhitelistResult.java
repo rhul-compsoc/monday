@@ -4,24 +4,31 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public enum WhitelistResult {
-  MISSING_URI(true, WhitelistAction.KICK_OTHER),
-  MALFORMED_URI(true, WhitelistAction.KICK_OTHER),
-  ALLOWED(false, WhitelistAction.ALLOW),
-  NOT_WHITELISTED(false, WhitelistAction.KICK_WHITELIST),
-  BANNED(false, WhitelistAction.KICK_BANNED),
-  SERVER_ERROR(true, WhitelistAction.KICK_OTHER),
-  SERVER_UNAUTHORISED(true, WhitelistAction.KICK_OTHER),
-  SERVER_FORBIDDEN(true, WhitelistAction.KICK_OTHER),
-  BAD_RESPONSE(true, WhitelistAction.KICK_OTHER),
-  IO_EXCEPTION(true, WhitelistAction.KICK_OTHER),
-  UNCAUGHT_EXCEPTION(true, WhitelistAction.KICK_OTHER);
+  MISSING_URI(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  MALFORMED_URI(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  ALLOWED(false, WhitelistAction.ALLOW, 0x00FF00),
+  SUBNET_ALLOW_EXCEPTION(false, WhitelistAction.ALLOW, 0x7FB413),
+  NOT_WHITELISTED(false, WhitelistAction.KICK_WHITELIST, 0xFF0000),
+  BANNED(false, WhitelistAction.KICK_BANNED, 0xFF0000),
+  SERVER_ERROR(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  SERVER_UNAUTHORISED(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  SERVER_FORBIDDEN(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  BAD_RESPONSE(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  IO_EXCEPTION(true, WhitelistAction.KICK_OTHER, 0xFF0000),
+  UNCAUGHT_EXCEPTION(true, WhitelistAction.KICK_OTHER, 0xFF0000);
 
   boolean error;
   WhitelistAction action;
+  private int colour;
 
-  WhitelistResult(boolean error, WhitelistAction action) {
+  WhitelistResult(boolean error, WhitelistAction action, int colour) {
     this.error = error;
     this.action = action;
+    this.colour = colour;
+  }
+
+  public int getColour() {
+    return this.colour;
   }
 
   public String getKey(FileConfiguration options) {
