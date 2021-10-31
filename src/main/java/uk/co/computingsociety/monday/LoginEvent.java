@@ -34,7 +34,7 @@ public class LoginEvent implements Listener {
     WhitelistResult result = checker.checkAndLog(event.getUniqueId().toString(), event.getAddress().getHostAddress(),
                                                  event.getName());
 
-    if (result != WhitelistResult.ALLOWED) {
+    if (result != WhitelistResult.ALLOWED && result != WhitelistResult.SUBNET_ALLOW_EXCEPTION) {
       event.disallow(result.action.asyncResult, result.getFullMessage(this.config));
     } else {
       event.allow();

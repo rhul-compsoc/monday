@@ -42,7 +42,11 @@ message:
       An IOException was caught while trying to fetch your whitelist details
     UNCAUGHT_EXCEPTION: |
       An uncaught exception was caught while trying to fetch your whitelist details
+    SUBNET_ALLOW_EXCEPTION: |
+      This user was allowed because the connecting user matches the internal subnet mask
   join:
+    SUBNET_ALLOW_EXCEPTION: |
+      This user was allowed because the connecting user matches the internal subnet mask
     MISSING_URI: |
       The MondayWhitelist plugin was not provided a whitelist URL
     MALFORMED_URI: |

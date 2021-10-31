@@ -4,12 +4,14 @@ import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.send.WebhookEmbed;
 import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
 import com.google.gson.Gson;
+import com.sun.tools.javac.comp.Check;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.logging.Level;
 
@@ -43,11 +45,11 @@ public class WhitelistChecker {
     return checkAndLog(uuid, null, null);
   }
   public WhitelistResult checkAndLog(String uuid, String address, String username) {
-    WhitelistResult result = this.check(uuid);
+    WhitelistResult result = this.check(uuid, address);
 
     if (this.webhookClient != null) {
       WebhookEmbedBuilder embed = new WebhookEmbedBuilder()
-        .setColor(result == WhitelistResult.ALLOWED ? 0x00FF00 : 0xFF0000)
+        .setColor(result.getColour())
         .setDescription(result.name())
         .addField(new WebhookEmbed.EmbedField(false, "User Message", result.getMessage(this.config)));
 
@@ -60,11 +62,17 @@ public class WhitelistChecker {
     return result;
   }
 
-  public WhitelistResult check(String uuid) {
+  public WhitelistResult check(String uuid, String address) {
     // Check if the location is null
     if (this.api == null) {
       return WhitelistResult.MISSING_URI;
     }
+
+    // Check for subnet exception (these are vile regexes ik)
+    // 134.219.0.0/16
+    if (address.matches("134\\.219\\..*")) return WhitelistResult.SUBNET_ALLOW_EXCEPTION;
+    // 192.168.0.0/24
+    if (address.matches("192\\.168\\..*")) return WhitelistResult.SUBNET_ALLOW_EXCEPTION;
 
     try {
       Gson gson = new Gson();
