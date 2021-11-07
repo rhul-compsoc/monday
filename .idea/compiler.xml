@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="monday" target="8" />
+      <module name="monday" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

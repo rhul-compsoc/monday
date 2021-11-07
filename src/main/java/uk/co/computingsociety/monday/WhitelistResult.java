@@ -7,6 +7,7 @@ public enum WhitelistResult {
   MISSING_URI(true, WhitelistAction.KICK_OTHER),
   MALFORMED_URI(true, WhitelistAction.KICK_OTHER),
   ALLOWED(false, WhitelistAction.ALLOW),
+  SUBNET_ALLOW_EXCEPTION(false, WhitelistAction.ALLOW),
   NOT_WHITELISTED(false, WhitelistAction.KICK_WHITELIST),
   BANNED(false, WhitelistAction.KICK_BANNED),
   SERVER_ERROR(true, WhitelistAction.KICK_OTHER),

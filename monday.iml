@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+    <facet type="minecraft" name="Minecraft">
+      <configuration>
+        <autoDetectTypes>
+          <platformType>SPIGOT</platformType>
+        </autoDetectTypes>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_16">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -18,11 +30,22 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-chat:1.16-R0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.26" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
-    <orderEntry type="library" name="Maven: club.minnced:discord-webhooks:0.1.6" level="project" />
+    <orderEntry type="library" name="Maven: club.minnced:discord-webhooks:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.12.0" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.15.0" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20180813" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.14.9" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.17.2" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20210307" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jetbrains:annotations:16.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.9" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.9" level="project" />
   </component>
 </module>

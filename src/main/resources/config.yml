@@ -6,6 +6,7 @@ url: https://example.com/api/games/bindings/guild/500612695570120704/game/minecr
 token: abcdefg==
 kick: true
 webhook: null
+allow_subnet: 134.219.0.0/24
 
 message:
   header: |+
@@ -22,6 +23,8 @@ message:
     MALFORMED_URI: |
       The MondayWhitelist plugin was provided an invalid URL
     ALLOWED: |
+      Welcome!
+    SUBNET_ALLOW_EXCEPTION: |
       Welcome!
     NOT_WHITELISTED: |
       Please add yourself (or get your RHUL friend to add you) to the whitelist with the CompSoc Passport.
@@ -48,6 +51,8 @@ message:
     MALFORMED_URI: |
       The MondayWhitelist plugin was provided an invalid URL
     ALLOWED: |
+      Have a nice day!
+    SUBNET_ALLOW_EXCEPTION: |
       Have a nice day!
     NOT_WHITELISTED: |
       The server will soon be for whitelisted members only.

@@ -31,7 +31,7 @@ public class LoginEvent implements Listener {
       return;
     }
 
-    WhitelistResult result = checker.checkAndLog(event.getUniqueId().toString(), event.getAddress().getHostAddress(),
+    WhitelistResult result = checker.checkAndLog(event.getUniqueId().toString(), event.getAddress(),
                                                  event.getName());
 
     if (result != WhitelistResult.ALLOWED) {
@@ -45,14 +45,14 @@ public class LoginEvent implements Listener {
   public void afterPlayerJoin(PlayerJoinEvent event) {
     FileConfiguration config = this.config;
 
-    // If the kicking mechanism is turned Ion, ignore the event.
+    // If the kicking mechanism is turned on, ignore the event.
     if (kick) {
       return;
     }
 
     Bukkit.getScheduler().runTaskAsynchronously(monday, () -> {
       WhitelistResult result = checker.checkAndLog(event.getPlayer().getUniqueId().toString(),
-                                                   event.getPlayer().getAddress().getAddress().getHostAddress(),
+                                                   event.getPlayer().getAddress().getAddress(),
                                                    event.getPlayer().getName());
       event.getPlayer().sendMessage(result.getFullMessage(config));
     });

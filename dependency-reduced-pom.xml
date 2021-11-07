@@ -4,7 +4,7 @@
   <groupId>uk.co.computingsociety.monday</groupId>
   <artifactId>monday</artifactId>
   <name>Minecraft Monday Authorisation System</name>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <description>Checks if a user has been authorised to join the server over HTTP.</description>
   <build>
     <plugins>
@@ -12,8 +12,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <source>8</source>
-          <target>8</target>
+          <source>16</source>
+          <target>16</target>
         </configuration>
       </plugin>
       <plugin>
@@ -53,6 +53,12 @@
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
       <version>1.16.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
